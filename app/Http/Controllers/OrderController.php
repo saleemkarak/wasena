@@ -57,7 +57,7 @@ class OrderController extends Controller
         // return $request->all();
 
         if(empty(Cart::where('user_id',auth()->user()->id)->where('order_id',null)->first())){
-            request()->session()->flash('error','Cart is Empty !');
+            request()->session()->flash('error','السلة فارغة !');
             return back();
         }
         // $cart=Cart::get();
@@ -146,8 +146,8 @@ class OrderController extends Controller
         }
         Cart::where('user_id', auth()->user()->id)->where('order_id', null)->update(['order_id' => $order->id]);
 
-        // dd($users);        
-        request()->session()->flash('success','Your product successfully placed in order');
+        // dd($users);
+        request()->session()->flash('success','تمت اضافة المنتج للطلبية بنجاح');
         return redirect()->route('home');
     }
 
@@ -201,10 +201,10 @@ class OrderController extends Controller
         }
         $status=$order->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Successfully updated order');
+            request()->session()->flash('success','تم تعديل الطلبية ');
         }
         else{
-            request()->session()->flash('error','Error while updating order');
+            request()->session()->flash('error','حاول مجدداً خطأ اثناء التنفيذ');
         }
         return redirect()->route('order.index');
     }
@@ -221,15 +221,15 @@ class OrderController extends Controller
         if($order){
             $status=$order->delete();
             if($status){
-                request()->session()->flash('success','Order Successfully deleted');
+                request()->session()->flash('success','حذف الطلبية بنجاح');
             }
             else{
-                request()->session()->flash('error','Order can not deleted');
+                request()->session()->flash('error','لايمكن حذف الطلبية');
             }
             return redirect()->route('order.index');
         }
         else{
-            request()->session()->flash('error','Order can not found');
+            request()->session()->flash('error','لايمكن ايجاد الطلبية');
             return redirect()->back();
         }
     }
@@ -243,28 +243,28 @@ class OrderController extends Controller
         $order=Order::where('user_id',auth()->user()->id)->where('order_number',$request->order_number)->first();
         if($order){
             if($order->status=="new"){
-            request()->session()->flash('success','Your order has been placed. please wait.');
+            request()->session()->flash('success','تم اكمال طلبك الرجاء انتظار وصول طلبك.');
             return redirect()->route('home');
 
             }
             elseif($order->status=="process"){
-                request()->session()->flash('success','Your order is under processing please wait.');
+                request()->session()->flash('success','طلبيتك قيد المعالجة الرجاء الانتظار.');
                 return redirect()->route('home');
-    
+
             }
             elseif($order->status=="delivered"){
-                request()->session()->flash('success','Your order is successfully delivered.');
+                request()->session()->flash('success','وصلك الطلب بنجاح #.');
                 return redirect()->route('home');
-    
+
             }
             else{
-                request()->session()->flash('error','Your order canceled. please try again');
+                request()->session()->flash('error','تم حذف الطلب حاول مجدداً');
                 return redirect()->route('home');
-    
+
             }
         }
         else{
-            request()->session()->flash('error','Invalid order numer please try again');
+            request()->session()->flash('error','خطأ في رقم الطلبية حاول مجدداً');
             return back();
         }
     }

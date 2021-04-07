@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 @include('backend.layouts.head')
 
-<body id="page-top">
+<body id="page-top" dir="">
 
   <!-- Page Wrapper -->
   <div id="wrapper">

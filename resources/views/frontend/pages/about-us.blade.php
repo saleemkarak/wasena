@@ -11,8 +11,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">About Us</a></li>
+							<li><a href="index1.html">الرئيسية<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="blog-single.html">عنا</a></li>
 						</ul>
 					</div>
 				</div>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-	
+
 	<!-- About Us -->
 	<section class="about-us section">
 			<div class="container">
@@ -33,8 +33,8 @@
 							<h3>Welcome To <span>Eshop</span></h3>
 							<p>@foreach($settings as $data) {{$data->description}} @endforeach</p>
 							<div class="button">
-								<a href="{{route('blog')}}" class="btn">Our Blog</a>
-								<a href="{{route('contact')}}" class="btn primary">Contact Us</a>
+								<a href="{{route('blog')}}" class="btn">المنشورات</a>
+								<a href="{{route('contact')}}" class="btn primary">اتصل بنا</a>
 							</div>
 						</div>
 					</div>
@@ -50,7 +50,7 @@
 			</div>
 	</section>
 	<!-- End About Us -->
-	
+
 	<!-- Start Team -->
 	{{-- <section id="team" class="team section">
 		<div class="container">
@@ -90,7 +90,7 @@
 							<!-- End Social -->
 						</div>
 					</div>
-				</div>	
+				</div>
 				<!-- End Single Team -->
 				<div class="col-lg-3 col-md-6 col-12">
 					<div class="single-team">
@@ -118,7 +118,7 @@
 							<!-- End Social -->
 						</div>
 					</div>
-				</div>	
+				</div>
 				<!-- End Single Team -->
 				<div class="col-lg-3 col-md-6 col-12">
 					<div class="single-team">
@@ -146,7 +146,7 @@
 							<!-- End Social -->
 						</div>
 					</div>
-				</div>	
+				</div>
 				<!-- End Single Team -->
 				<div class="col-lg-3 col-md-6 col-12">
 					<div class="single-team">
@@ -174,13 +174,13 @@
 							<!-- End Social -->
 						</div>
 					</div>
-				</div>	
+				</div>
 				<!-- End Single Team -->
-			</div>	
+			</div>
 		</div>
 	</section> --}}
 	<!--/ End Team Area -->
-	
+
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section">
 		<div class="container">
@@ -189,8 +189,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<h4>شحن مجاني</h4>
+						<p>للطلبات لغاية  ٥٠ دينار</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -198,8 +198,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
+						<h4>امكانيةالارجاع </h4>
+						<p>خلال اسبوع فقط</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -207,8 +207,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
+						<h4>دفع امن</h4>
+						<p>100% مضمون</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -216,8 +216,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
+						<h4>افضل سعر في الاردن</h4>
+						<p>جودة مضمونة</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -225,6 +225,6 @@
 		</div>
 	</section>
 	<!-- End Shop Services Area -->
-	
+
 	@include('frontend.layouts.newsletter')
 @endsection

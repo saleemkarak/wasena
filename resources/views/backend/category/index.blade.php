@@ -8,8 +8,8 @@
             @include('backend.layouts.notification')
          </div>
      </div>
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Category Lists</h6>
+    <div class="card-header py-3" dir="rtl">
+      <h6 class="m-0 font-weight-bold text-primary float-left">قائمة التصنيفات</h6>
       <a href="{{route('category.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Category</a>
     </div>
     <div class="card-body">
@@ -19,31 +19,31 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Title</th>
-              <th>Slug</th>
-              <th>Is Parent</th>
-              <th>Parent Category</th>
-              <th>Photo</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>العنوان</th>
+              <th>الترميز</th>
+              <th>هل هو تصنيف اعلى</th>
+              <th>تصنيف اعلى</th>
+              <th>الصورة</th>
+              <th>الحالة</th>
+              <th>الاجراء</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
-              <th>Title</th>
-              <th>Slug</th>
-              <th>Is Parent</th>
-              <th>Parent Category</th>
-              <th>Photo</th>
-              <th>Status</th>
-              <th>Action</th>
+                <th>S.N.</th>
+                <th>العنوان</th>
+                <th>الترميز</th>
+                <th>هل هو تصنيف اعلى</th>
+                <th>تصنيف اعلى</th>
+                <th>الصورة</th>
+                <th>الحالة</th>
+                <th>الاجراء</th>
             </tr>
           </tfoot>
           <tbody>
-           
-            @foreach($categories as $category)   
-              @php 
+
+            @foreach($categories as $category)
+              @php
               $parent_cats=DB::table('categories')->select('title')->where('id',$category->parent_id)->get();
               // dd($parent_cats);
 
@@ -75,7 +75,7 @@
                     <td>
                         <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{route('category.destroy',[$category->id])}}">
-                      @csrf 
+                      @csrf
                       @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$category->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="modal-body">
                               <form method="post" action="{{ route('categorys.destroy',$user->id) }}">
-                                @csrf 
+                                @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger" style="margin:auto; text-align:center">Parmanent delete user</button>
                               </form>
@@ -100,13 +100,13 @@
                           </div>
                         </div>
                     </div> --}}
-                </tr>  
+                </tr>
             @endforeach
           </tbody>
         </table>
         <span style="float:right">{{$categories->links()}}</span>
         @else
-          <h6 class="text-center">No Categories found!!! Please create Category</h6>
+          <h6 class="text-center">لا يوجد تصنيفات قم باضافة واحدة </h6>
         @endif
       </div>
     </div>
@@ -133,7 +133,7 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
-      
+
       $('#banner-dataTable').DataTable( {
             "columnDefs":[
                 {
@@ -146,7 +146,7 @@
         // Sweet alert
 
         function deleteData(id){
-            
+
         }
   </script>
   <script>

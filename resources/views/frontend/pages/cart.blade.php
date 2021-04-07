@@ -8,8 +8,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="{{('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="">Cart</a></li>
+							<li><a href="{{('home')}}">الرئيسية<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="">السلة</a></li>
 						</ul>
 					</div>
 				</div>
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-			
+
 	<!-- Shopping Cart -->
 	<div class="shopping-cart section">
 		<div class="container">
@@ -27,11 +27,11 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>PRODUCT</th>
-								<th>NAME</th>
-								<th class="text-center">UNIT PRICE</th>
-								<th class="text-center">QUANTITY</th>
-								<th class="text-center">TOTAL</th> 
+								<th>المنتج</th>
+								<th>الاسم</th>
+								<th class="text-center">سعر الوحدة</th>
+								<th class="text-center">الكمية</th>
+								<th class="text-center">المجموع</th>
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
@@ -41,7 +41,7 @@
 								@if(Helper::getAllProductFromCart())
 									@foreach(Helper::getAllProductFromCart() as $key=>$cart)
 										<tr>
-											@php 
+											@php
 											$photo=explode(',',$cart->product['photo']);
 											@endphp
 											<td class="image" data-title="No"><img src="{{$photo[0]}}" alt="{{$photo[0]}}"></td>
@@ -68,7 +68,7 @@
 												<!--/ End Input Order -->
 											</td>
 											<td class="total-amount cart_single_price" data-title="Total"><span class="money">${{$cart['amount']}}</span></td>
-											
+
 											<td class="action" data-title="Remove"><a href="{{route('cart-delete',$cart->id)}}"><i class="ti-trash remove-icon"></i></a></td>
 										</tr>
 									@endforeach
@@ -79,18 +79,18 @@
 										<td></td>
 										<td></td>
 										<td class="float-right">
-											<button class="btn float-right" type="submit">Update</button>
+											<button class="btn float-right" type="submit">تحديث</button>
 										</td>
 									</track>
-								@else 
+								@else
 										<tr>
 											<td class="text-center">
-												There are no any carts available. <a href="{{route('product-grids')}}" style="color:blue;">Continue shopping</a>
+												لا يوجد سلة متوفرة <a href="{{route('product-grids')}}" style="color:blue;">استمرار التسوق</a>
 
 											</td>
 										</tr>
 								@endif
-								
+
 							</form>
 						</tbody>
 					</table>
@@ -108,11 +108,11 @@
 									<form action="{{route('coupon-store')}}" method="POST">
 											@csrf
 											<input name="code" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
+											<button class="btn">تطبيق</button>
 										</form>
 									</div>
 									{{-- <div class="checkbox">`
-										@php 
+										@php
 											$shipping=DB::table('shippings')->where('status','active')->limit(1)->get();
 										@endphp
 										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" onchange="showMe('shipping');"> Shipping</label>
@@ -122,7 +122,7 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">Cart Subtotal<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
+										<li class="order_subtotal" data-price="{{Helper::totalCartPrice()}}">مجموع المشتريات في السلة<span>${{number_format(Helper::totalCartPrice(),2)}}</span></li>
 										{{-- <div id="shipping" style="display:none;">
 											<li class="shipping">
 												Shipping {{session('shipping_price')}}
@@ -135,7 +135,7 @@
 															@endforeach
 														</select>
 													</div>
-												@else 
+												@else
 													<div class="form-select">
 														<span>Free</span>
 													</div>
@@ -145,7 +145,7 @@
 										 --}}
 										 {{-- {{dd(Session::get('coupon')['value'])}} --}}
 										@if(session()->has('coupon'))
-										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">You Save<span>${{number_format(Session::get('coupon')['value'],2)}}</span></li>
+										<li class="coupon_price" data-price="{{Session::get('coupon')['value']}}">قيمة التوفير<span>${{number_format(Session::get('coupon')['value'],2)}}</span></li>
 										@endif
 										@php
 											$total_amount=Helper::totalCartPrice();
@@ -154,14 +154,14 @@
 											}
 										@endphp
 										@if(session()->has('coupon'))
-											<li class="last" id="order_total_price">You Pay<span>${{number_format($total_amount,2)}}</span></li>
+											<li class="last" id="order_total_price">قمت بدفع<span>${{number_format($total_amount,2)}}</span></li>
 										@else
-											<li class="last" id="order_total_price">You Pay<span>${{number_format($total_amount,2)}}</span></li>
+											<li class="last" id="order_total_price">قمت بدفع<span>${{number_format($total_amount,2)}}</span></li>
 										@endif
 									</ul>
 									<div class="button5">
-										<a href="{{route('checkout')}}" class="btn">Checkout</a>
-										<a href="{{route('product-grids')}}" class="btn">Continue shopping</a>
+										<a href="{{route('checkout')}}" class="btn">دفع</a>
+										<a href="{{route('product-grids')}}" class="btn">استمرار التسوق</a>
 									</div>
 								</div>
 							</div>
@@ -173,8 +173,8 @@
 		</div>
 	</div>
 	<!--/ End Shopping Cart -->
-			
-	<!-- Start Shop Services Area  -->
+
+	<!-- Start Shop Services Area -->
 	<section class="shop-services section">
 		<div class="container">
 			<div class="row">
@@ -182,8 +182,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<h4>شحن مجاني</h4>
+						<p>للطلبات لغاية  ٥٠ دينار</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -191,8 +191,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
+						<h4>امكانيةالارجاع </h4>
+						<p>خلال اسبوع فقط</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -200,8 +200,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
+						<h4>دفع امن</h4>
+						<p>100% مضمون</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -209,22 +209,22 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
+						<h4>افضل سعر في الاردن</h4>
+						<p>جودة مضمونة</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- End Shop Newsletter -->
-	
+	<!-- End Shop Services Area -->
+
 	<!-- Start Shop Newsletter  -->
 	@include('frontend.layouts.newsletter')
 	<!-- End Shop Newsletter -->
-	
-	
-	
+
+
+
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -269,7 +269,7 @@
                                             <a href="#"> (1 customer review)</a>
                                         </div>
                                         <div class="quickview-stock">
-                                            <span><i class="fa fa-check-circle-o"></i> in stock</span>
+                                            <span><i class="fa fa-check-circle-o"></i> متوفر في المخزن</span>
                                         </div>
                                     </div>
                                     <h3>$29.00</h3>
@@ -337,7 +337,7 @@
             </div>
         </div>
         <!-- Modal end -->
-	
+
 @endsection
 @push('styles')
 	<style>
@@ -393,8 +393,8 @@
 		$(document).ready(function(){
 			$('.shipping select[name=shipping]').change(function(){
 				let cost = parseFloat( $(this).find('option:selected').data('price') ) || 0;
-				let subtotal = parseFloat( $('.order_subtotal').data('price') ); 
-				let coupon = parseFloat( $('.coupon_price').data('price') ) || 0; 
+				let subtotal = parseFloat( $('.order_subtotal').data('price') );
+				let coupon = parseFloat( $('.coupon_price').data('price') ) || 0;
 				// alert(coupon);
 				$('#order_total_price span').text('$'+(subtotal + cost-coupon).toFixed(2));
 			});

@@ -39,7 +39,7 @@
                 <form class="border px-4 pt-2 pb-3" method="POST" action="{{route('user-profile-update',$profile->id)}}">
                     @csrf
                     <div class="form-group">
-                        <label for="inputTitle" class="col-form-label">Name</label>
+                        <label for="inputTitle" class="col-form-label">الاسم</label>
                       <input id="inputTitle" type="text" name="name" placeholder="Enter name"  value="{{$profile->name}}" class="form-control">
                       @error('name')
                       <span class="text-danger">{{$message}}</span>
@@ -47,7 +47,7 @@
                       </div>
 
                       <div class="form-group">
-                          <label for="inputEmail" class="col-form-label">Email</label>
+                          <label for="inputEmail" class="col-form-label">الايميل</label>
                         <input id="inputEmail" disabled type="email" name="email" placeholder="Enter email"  value="{{$profile->email}}" class="form-control">
                         @error('email')
                         <span class="text-danger">{{$message}}</span>
@@ -55,11 +55,11 @@
                       </div>
 
                       <div class="form-group">
-                      <label for="inputPhoto" class="col-form-label">Photo</label>
+                      <label for="inputPhoto" class="col-form-label">الصورة</label>
                       <div class="input-group">
                           <span class="input-group-btn">
                               <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                              <i class="fa fa-picture-o"></i> Choose
+                              <i class="fa fa-picture-o"></i> اختر
                               </a>
                           </span>
                           <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$profile->photo}}">
@@ -69,9 +69,9 @@
                         @enderror
                       </div>
                       <div class="form-group">
-                          <label for="role" class="col-form-label">Role</label>
+                          <label for="role" class="col-form-label">الدور</label>
                           <select name="role" class="form-control">
-                              <option value="">-----Select Role-----</option>
+                              <option value="">-----اختر دور المستخدم-----</option>
                                   <option value="admin" {{(($profile->role=='admin')? 'selected' : '')}}>مسؤوول</option>
                                   <option value="user" {{(($profile->role=='user')? 'selected' : '')}}>مستخدم</option>
                           </select>

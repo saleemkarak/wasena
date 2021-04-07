@@ -3,7 +3,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; <a href="https://github.com/Prajwal100" target="_blank">PrajwalRai</a> 2020</span>
+            <span>Copyright &copy; <a href="https://microjo.site" target="_blank">MicroJo</a> 2021</span>
           </div>
         </div>
       </footer>
@@ -30,10 +30,10 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">اختر تسجيل الخروج اذا كنت انهيت</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">الغاء</button>
+          <a class="btn btn-primary" href="login.html">تسجيل خروج</a>
         </div>
       </div>
     </div>

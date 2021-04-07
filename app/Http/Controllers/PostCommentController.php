@@ -56,10 +56,10 @@ class PostCommentController extends Controller
         ];
         Notification::send($user, new StatusNotification($details));
         if($status){
-            request()->session()->flash('success','Thank you for your comment');
+            request()->session()->flash('success','شكرا لتعلبقك ');
         }
         else{
-            request()->session()->flash('error','Something went wrong! Please try again!!');
+            request()->session()->flash('error','حاول مجدداً!!');
         }
         return redirect()->back();
     }
@@ -88,7 +88,7 @@ class PostCommentController extends Controller
             return view('backend.comment.edit')->with('comment',$comments);
         }
         else{
-            request()->session()->flash('error','Comment not found');
+            request()->session()->flash('error','لايوجد تعليقات');
             return redirect()->back();
         }
     }
@@ -108,10 +108,10 @@ class PostCommentController extends Controller
             // return $data;
             $status=$comment->fill($data)->update();
             if($status){
-                request()->session()->flash('success','Comment successfully updated');
+                request()->session()->flash('success','تم التعديل بنجاح');
             }
             else{
-                request()->session()->flash('error','Something went wrong! Please try again!!');
+                request()->session()->flash('error','حاول مجدداً خطأ اثناء التنفيذ!!');
             }
             return redirect()->route('comment.index');
         }
@@ -134,10 +134,10 @@ class PostCommentController extends Controller
         if($comment){
             $status=$comment->delete();
             if($status){
-                request()->session()->flash('success','Post Comment successfully deleted');
+                request()->session()->flash('success','تم الحذف بنجاح');
             }
             else{
-                request()->session()->flash('error','Error occurred please try again');
+                request()->session()->flash('error','حاول مجدداً خطأ اثناء التنفيذ');
             }
             return back();
         }

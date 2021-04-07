@@ -60,7 +60,7 @@ class MessageController extends Controller
         $data['message']=$message->message;
         $data['subject']=$message->subject;
         $data['photo']=Auth()->user()->photo;
-        // return $data;    
+        // return $data;
         event(new MessageSent($data));
         exit();
     }
@@ -118,10 +118,10 @@ class MessageController extends Controller
         $message=Message::find($id);
         $status=$message->delete();
         if($status){
-            request()->session()->flash('success','Successfully deleted message');
+            request()->session()->flash('success','تم حذف الرسالة بنجاح');
         }
         else{
-            request()->session()->flash('error','Error occurred please try again');
+            request()->session()->flash('error','حدث خطأمعبن حاول مجدداً');
         }
         return back();
     }

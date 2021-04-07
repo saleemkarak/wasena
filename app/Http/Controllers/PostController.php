@@ -77,10 +77,10 @@ class PostController extends Controller
 
         $status=Post::create($data);
         if($status){
-            request()->session()->flash('success','Post Successfully added');
+            request()->session()->flash('success','تمت الاضافة بنجاح');
         }
         else{
-            request()->session()->flash('error','Please try again!!');
+            request()->session()->flash('error','حاول مجدداً!!');
         }
         return redirect()->route('post.index');
     }
@@ -147,10 +147,10 @@ class PostController extends Controller
 
         $status=$post->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Post Successfully updated');
+            request()->session()->flash('success','تم التعديل بنجاح');
         }
         else{
-            request()->session()->flash('error','Please try again!!');
+            request()->session()->flash('error','حاول مجدداً!!');
         }
         return redirect()->route('post.index');
     }
@@ -164,14 +164,14 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post=Post::findOrFail($id);
-       
+
         $status=$post->delete();
-        
+
         if($status){
-            request()->session()->flash('success','Post successfully deleted');
+            request()->session()->flash('success','تم الحذف بنجاح');
         }
         else{
-            request()->session()->flash('error','Error while deleting post ');
+            request()->session()->flash('error','حاول مجدداً!!');
         }
         return redirect()->route('post.index');
     }

@@ -49,10 +49,10 @@ class PostTagController extends Controller
         $data['slug']=$slug;
         $status=PostTag::create($data);
         if($status){
-            request()->session()->flash('success','Post Tag Successfully added');
+            request()->session()->flash('success','تمت الاضافة بنجاح');
         }
         else{
-            request()->session()->flash('error','Please try again!!');
+            request()->session()->flash('error','حاول مجدداً!!');
         }
         return redirect()->route('post-tag.index');
     }
@@ -98,10 +98,10 @@ class PostTagController extends Controller
         $data=$request->all();
         $status=$postTag->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Post Tag Successfully updated');
+            request()->session()->flash('success','تم التعديل بنجاح');
         }
         else{
-            request()->session()->flash('error','Please try again!!');
+            request()->session()->flash('error','حاول مجدداً!!');
         }
         return redirect()->route('post-tag.index');
     }
@@ -115,14 +115,14 @@ class PostTagController extends Controller
     public function destroy($id)
     {
         $postTag=PostTag::findOrFail($id);
-       
+
         $status=$postTag->delete();
-        
+
         if($status){
-            request()->session()->flash('success','Post Tag successfully deleted');
+            request()->session()->flash('success','تم الحذف ');
         }
         else{
-            request()->session()->flash('error','Error while deleting post tag');
+            request()->session()->flash('error','حاول مجددا لم يتم الحذف');
         }
         return redirect()->route('post-tag.index');
     }

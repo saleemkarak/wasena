@@ -49,10 +49,10 @@ class BrandController extends Controller
         // return $data;
         $status=Brand::create($data);
         if($status){
-            request()->session()->flash('success','Brand successfully created');
+            request()->session()->flash('success','تمت اضافة ماركة بنجاح');
         }
         else{
-            request()->session()->flash('error','Error, Please try again');
+            request()->session()->flash('error','حدث خطأمعبن حاول مجدداً !!!!');
         }
         return redirect()->route('brand.index');
     }
@@ -78,7 +78,7 @@ class BrandController extends Controller
     {
         $brand=Brand::find($id);
         if(!$brand){
-            request()->session()->flash('error','Brand not found');
+            request()->session()->flash('error','الماركة غير متوفرة');
         }
         return view('backend.brand.edit')->with('brand',$brand);
     }
@@ -98,13 +98,13 @@ class BrandController extends Controller
             'title'=>'string|required',
         ]);
         $data=$request->all();
-       
+
         $status=$brand->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Brand successfully updated');
+            request()->session()->flash('success','تم تحديث الماركة');
         }
         else{
-            request()->session()->flash('error','Error, Please try again');
+            request()->session()->flash('error','حدث خطأمعبن حاول مجدداً !!!!');
         }
         return redirect()->route('brand.index');
     }
@@ -121,15 +121,15 @@ class BrandController extends Controller
         if($brand){
             $status=$brand->delete();
             if($status){
-                request()->session()->flash('success','Brand successfully deleted');
+                request()->session()->flash('success','تم الحذف');
             }
             else{
-                request()->session()->flash('error','Error, Please try again');
+                request()->session()->flash('error','حدث خطأمعبن حاول مجدداً !!!!');
             }
             return redirect()->route('brand.index');
         }
         else{
-            request()->session()->flash('error','Brand not found');
+            request()->session()->flash('error','الماركة غير موجودة');
             return redirect()->back();
         }
     }

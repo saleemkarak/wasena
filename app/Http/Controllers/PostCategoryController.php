@@ -50,10 +50,10 @@ class PostCategoryController extends Controller
         $data['slug']=$slug;
         $status=PostCategory::create($data);
         if($status){
-            request()->session()->flash('success','Post Category Successfully added');
+            request()->session()->flash('success','تمت اضافة منشور');
         }
         else{
-            request()->session()->flash('error','Please try again!!');
+            request()->session()->flash('error','حاول مجددا!!');
         }
         return redirect()->route('post-category.index');
     }
@@ -99,10 +99,10 @@ class PostCategoryController extends Controller
         $data=$request->all();
         $status=$postCategory->fill($data)->save();
         if($status){
-            request()->session()->flash('success','Post Category Successfully updated');
+            request()->session()->flash('success','تم التعديل بنجاح');
         }
         else{
-            request()->session()->flash('error','Please try again!!');
+            request()->session()->flash('error','حاول مجدداً خطأ اثناء التنفيذ!!');
         }
         return redirect()->route('post-category.index');
     }
@@ -116,14 +116,14 @@ class PostCategoryController extends Controller
     public function destroy($id)
     {
         $postCategory=PostCategory::findOrFail($id);
-       
+
         $status=$postCategory->delete();
-        
+
         if($status){
-            request()->session()->flash('success','Post Category successfully deleted');
+            request()->session()->flash('success','تم الحذف لنجاح');
         }
         else{
-            request()->session()->flash('error','Error while deleting post category');
+            request()->session()->flash('error','حاول مجدداً خطأ اثناء التنفيذ');
         }
         return redirect()->route('post-category.index');
     }

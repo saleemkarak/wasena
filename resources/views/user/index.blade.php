@@ -5,7 +5,7 @@
     @include('user.layouts.notification')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+      <h1 class="h3 mb-0 text-gray-800">لوحة التحكم</h1>
     </div>
 
     <!-- Content Row -->
@@ -56,7 +56,7 @@
                   <div class="col-auto">
                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{\App\Models\Order::countActiveOrder()}}</div>
                   </div>
-                  
+
                 </div>
               </div>
               <div class="col-auto">
@@ -97,30 +97,30 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Order No.</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Quantity</th>
-              <th>Total Amount</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>رقم الطلبية</th>
+              <th>الاسم</th>
+              <th>الايميل</th>
+              <th>الكمية</th>
+              <th>المحموع الاجمالي</th>
+              <th>الحالة</th>
+              <th>الاجراء</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
-              <th>Order No.</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Quantity</th>
-              <th>Total Amount</th>
-              <th>Status</th>
-              <th>Action</th>
+                <th>S.N.</th>
+                <th>رقم الطلبية</th>
+                <th>الاسم</th>
+                <th>الايميل</th>
+                <th>الكمية</th>
+                <th>المحموع الاجمالي</th>
+                <th>الحالة</th>
+                <th>الاجراء</th>
               </tr>
           </tfoot>
           <tbody>
             @if(count($orders)>0)
-              @foreach($orders as $order)   
+              @foreach($orders as $order)
                 <tr>
                     <td>{{$order->id}}</td>
                     <td>{{$order->order_number}}</td>
@@ -142,15 +142,15 @@
                     <td>
                         <a href="{{route('user.order.show',$order->id)}}" class="btn btn-warning btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
                         <form method="POST" action="{{route('user.order.delete',[$order->id])}}">
-                          @csrf 
+                          @csrf
                           @method('delete')
                               <button class="btn btn-danger btn-sm dltBtn" data-id={{$order->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
-                </tr>  
+                </tr>
               @endforeach
               @else
-                <td colspan="8" class="text-center"><h4 class="my-4">You have no order yet!! Please order some products</h4></td>
+                <td colspan="8" class="text-center"><h4 class="my-4">لا يوجد طلبات قم بشراء منتجات </h4></td>
               @endif
           </tbody>
         </table>

@@ -45,16 +45,16 @@
                         <p>{!! html_entity_decode($banner->description) !!}</p>
                         <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">Shop Now<i class="far fa-arrow-alt-circle-right"></i></i></a>
                     </div>
-                </div>  
-            @endforeach   
+                </div>
+            @endforeach
         </div>
         <a class="carousel-control-prev" href="#Gslider" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">السابق</span>
         </a>
         <a class="carousel-control-next" href="#Gslider" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">التالي</span>
         </a>
     </section>
 @endif
@@ -65,7 +65,7 @@
 <section class="small-banner section">
     <div class="container-fluid">
         <div class="row">
-            @php 
+            @php
             $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
             @endphp
             @if($category_lists)
@@ -81,7 +81,7 @@
                                 @endif
                                 <div class="content">
                                     <h3>{{$cat->title}}</h3>
-                                        <a href="{{route('product-cat',$cat->slug)}}">Discover Now</a>
+                                        <a href="{{route('product-cat',$cat->slug)}}">اكتشف الان</a>
                                 </div>
                             </div>
                         </div>
@@ -100,26 +100,26 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Trending Item</h2>
+                        <h2>منتجات رائجة</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">        
+                <div class="col-12">
                     <div class="product-info">
                         <div class="nav-main">
                             <!-- Tab Nav -->
                             <ul class="nav nav-tabs filter-tope-group" id="myTab" role="tablist">
-                                @php 
+                                @php
                                     $categories=DB::table('categories')->where('status','active')->where('is_parent',1)->get();
                                     // dd($categories);
                                 @endphp
                                 @if($categories)
                                 <button class="btn" style="background:black"data-filter="*">
-                                    All Products
+                                    جميع المنتجات
                                 </button>
                                     @foreach($categories as $key=>$cat)
-                                    
+
                                     <button class="btn" style="background:none;color:black;"data-filter=".{{$cat->id}}">
                                         {{$cat->title}}
                                     </button>
@@ -136,7 +136,7 @@
                                     <div class="single-product">
                                         <div class="product-img">
                                             <a href="{{route('product-detail',$product->slug)}}">
-                                                @php 
+                                                @php
                                                     $photo=explode(',',$product->photo);
                                                 // dd($photo);
                                                 @endphp
@@ -147,6 +147,7 @@
                                                 @elseif($product->condition=='new')
                                                     <span class="new">New</span
                                                 @elseif($product->condition=='hot')
+
                                                     <span class="hot">Hot</span>
                                                 @else
                                                     <span class="price-dec">{{$product->discount}}% Off</span>
@@ -156,11 +157,11 @@
                                             </a>
                                             <div class="button-head">
                                                 <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>تسوق سريعا</span></a>
+                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>اضف للمفضلة</span></a>
                                                 </div>
                                                 <div class="product-action-2">
-                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">اضف للسلة</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +172,7 @@
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
                                                 <span>${{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;">${{number_format($product->price,2)}}</del>
+                                                <del style="padding-left:4%;"> دينار{{number_format($product->price,2)}}</del>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +181,7 @@
 
                              <!--/ End Single Tab -->
                             @endif
-                       
+
                         <!--/ End Single Tab -->
 
                         </div>
@@ -202,14 +203,14 @@
                     <!-- Single Banner  -->
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="single-banner">
-                            @php 
+                            @php
                                 $photo=explode(',',$data->photo);
                             @endphp
                             <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
                             <div class="content">
                                 <p>{{$data->cat_info['title']}}</p>
                                 <h3>{{$data->title}} <br>Up to<span> {{$data->discount}}%</span></h3>
-                                <a href="{{route('product-detail',$data->slug)}}">Shop Now</a>
+                                <a href="{{route('product-detail',$data->slug)}}">تسوق الان</a>
                             </div>
                         </div>
                     </div>
@@ -240,7 +241,7 @@
                         <div class="single-product">
                             <div class="product-img">
                                 <a href="{{route('product-detail',$product->slug)}}">
-                                    @php 
+                                    @php
                                         $photo=explode(',',$product->photo);
                                     // dd($photo);
                                     @endphp
@@ -262,7 +263,7 @@
                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
                                 <div class="product-price">
                                     <span class="old">${{number_format($product->price,2)}}</span>
-                                    @php 
+                                    @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                     @endphp
                                     <span>${{number_format($after_discount,2)}}</span>
@@ -287,7 +288,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="shop-section-title">
-                            <h1>Latest Items</h1>
+                            <h1>منتجات وصلت مؤخراً</h1>
                         </div>
                     </div>
                 </div>
@@ -302,7 +303,7 @@
                                 <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="list-image overlay">
-                                        @php 
+                                        @php
                                             $photo=explode(',',$product->photo);
                                             // dd($photo);
                                         @endphp
@@ -313,7 +314,7 @@
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content">
                                         <h4 class="title"><a href="#">{{$product->title}}</a></h4>
-                                        <p class="price with-discount">${{number_format($product->discount,2)}}</p>
+                                        <p class="price with-discount">دينار {{number_format($product->discount,2)}}</p>
                                     </div>
                                 </div>
                                 </div>
@@ -336,20 +337,20 @@
                 <div class="row">
                     <div class="col-lg-6 col-12 padding-right">
                         <div class="image">
-                            @php 
+                            @php
                                 $photo=explode(',',$data->photo);
                                 // dd($photo);
                             @endphp
                             <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                        </div>	
-                    </div>	
+                        </div>
+                    </div>
                     <div class="col-lg-6 col-12 padding-left">
                         <div class="content">
                             <div class="heading-block">
                                 <p class="small-title">Deal of day</p>
                                 <h3 class="title">{{$data->title}}</h3>
                                 <p class="text">{!! html_entity_decode($data->summary) !!}</p>
-                                @php 
+                                @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                 @endphp
                                 <h1 class="price">${{number_format($after_discount)}} <s>${{number_format($data->price)}}</s></h1>
@@ -357,8 +358,8 @@
                                     <div class="clearfix" data-countdown="2021/02/30"></div>
                                 </div>
                             </div>
-                        </div>	
-                    </div>	
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -392,7 +393,7 @@
                     </div>
                 @endforeach
             @endif
-            
+
         </div>
     </div>
 </section>
@@ -460,7 +461,7 @@
                                     <!-- Product Slider -->
                                         <div class="product-gallery">
                                             <div class="quickview-slider-active">
-                                                @php 
+                                                @php
                                                     $photo=explode(',',$product->photo);
                                                 // dd($photo);
                                                 @endphp
@@ -491,7 +492,7 @@
                                                     @for($i=1; $i<=5; $i++)
                                                         @if($rate>=$i)
                                                             <i class="yellow fa fa-star"></i>
-                                                        @else 
+                                                        @else
                                                         <i class="fa fa-star"></i>
                                                         @endif
                                                     @endfor
@@ -501,7 +502,7 @@
                                             <div class="quickview-stock">
                                                 @if($product->stock >0)
                                                 <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
-                                                @else 
+                                                @else
                                                 <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
                                                 @endif
                                             </div>
@@ -519,7 +520,7 @@
                                                     <div class="col-lg-6 col-12">
                                                         <h5 class="title">Size</h5>
                                                         <select>
-                                                            @php 
+                                                            @php
                                                             $sizes=explode(',',$product->size);
                                                             // dd($sizes);
                                                             @endphp
@@ -541,7 +542,7 @@
                                             </div>
                                         @endif
                                         <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
-                                            @csrf 
+                                            @csrf
                                             <div class="quantity">
                                                 <!-- Input Order -->
                                                 <div class="input-group">
@@ -678,14 +679,14 @@
                     else{
                         swal('error',response.msg,'error').then(function(){
 							// document.location.href=document.location.href;
-						}); 
+						});
                     }
                 }
             });
         });
     </script> --}}
     <script>
-        
+
         /*==================================================================
         [ Isotope ]*/
         var $topeContainer = $('.isotope-grid');
@@ -697,7 +698,7 @@
                 var filterValue = $(this).attr('data-filter');
                 $topeContainer.isotope({filter: filterValue});
             });
-            
+
         });
 
         // init Isotope

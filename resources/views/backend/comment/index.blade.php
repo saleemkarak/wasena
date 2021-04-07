@@ -9,7 +9,7 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Comment Lists</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">قائمة التعليقات</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -18,29 +18,29 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Author</th>
-              <th>Post Title</th>
-              <th>Message</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>الكاتب</th>
+              <th>عنوان المنشور</th>
+              <th>رسالة</th>
+              <th>التاريخ</th>
+              <th>الحالة</th>
+              <th>الاجراء</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
-              <th>Author</th>
-              <th>Post Title</th>
-              <th>Message</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Action</th>
+                <th>S.N.</th>
+                <th>الكاتب</th>
+                <th>عنوان المنشور</th>
+                <th>رسالة</th>
+                <th>التاريخ</th>
+                <th>الحالة</th>
+                <th>الاجراء</th>
             </tr>
           </tfoot>
           <tbody>
             @foreach($comments as $comment)
             {{-- {{$comment}}   --}}
-              @php 
+              @php
               $title=DB::table('posts')->select('title')->where('id',$comment->post_id)->get();
               @endphp
                 <tr>
@@ -59,18 +59,18 @@
                     <td>
                         <a href="{{route('comment.edit',$comment->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                         <form method="POST" action="{{route('comment.destroy',[$comment->id])}}">
-                          @csrf 
+                          @csrf
                           @method('delete')
                               <button class="btn btn-danger btn-sm dltBtn" data-id={{$comment->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
-                </tr>  
+                </tr>
             @endforeach
           </tbody>
         </table>
         <span style="float:right">{{$comments->links()}}</span>
         @else
-          <h6 class="text-center">No post comments found!!!</h6>
+          <h6 class="text-center">لا يوجد منشورات او تعليقات</h6>
         @endif
       </div>
     </div>
@@ -97,7 +97,7 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
-      
+
       $('#order-dataTable').DataTable( {
             "columnDefs":[
                 {
@@ -110,7 +110,7 @@
         // Sweet alert
 
         function deleteData(id){
-            
+
         }
   </script>
   <script>
