@@ -128,10 +128,10 @@ class UsersController extends Controller
         $delete=User::findorFail($id);
         $status=$delete->delete();
         if($status){
-            request()->session()->flash('success','User Successfully deleted');
+            request()->session()->flash('success','تم الحذف بنجاح');
         }
         else{
-            request()->session()->flash('error','There is an error while deleting users');
+            request()->session()->flash('error','حدث خطأ اثناء الحذف');
         }
         return redirect()->route('users.index');
     }

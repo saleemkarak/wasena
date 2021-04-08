@@ -14,7 +14,10 @@
 	<meta property="og:image" content="{{$product_detail->photo}}">
 	<meta property="og:description" content="{{$product_detail->description}}">
 @endsection
-@section('title','E-SHOP || PRODUCT DETAIL')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || تفاصيل المنتج' )
 @section('main-content')
 
 		<!-- Breadcrumbs -->

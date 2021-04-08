@@ -10,7 +10,7 @@
      </div>
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary float-left">قائمة الكوبونات</h6>
-      <a href="{{route('coupon.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Coupon</a>
+      <a href="{{route('coupon.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> اضف كوبون</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -158,8 +158,8 @@
               // alert(dataID);
               e.preventDefault();
               swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this data!",
+                    title: "هل تريد الحذف؟",
+                    text: "لن تستطيع الاسترجاع في حال حذفت البيانات!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -168,7 +168,7 @@
                     if (willDelete) {
                        form.submit();
                     } else {
-                        swal("Your data is safe!");
+                        swal("البيانات في أمان !");
                     }
                 });
           })

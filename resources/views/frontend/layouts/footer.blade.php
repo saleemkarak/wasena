@@ -9,13 +9,17 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="{{asset('backend/img/logo2.png')}}" alt="#"></a>
+
+
+
+								<a href="index.html"><img src={{Helper::settings()->logo}} alt="#" style ="width:200px;"></a>
 							</div>
 							@php
 								$settings=DB::table('settings')->get();
 							@endphp
+
 							<p class="text">@foreach($settings as $data) {{$data->short_des}} @endforeach</p>
-							<p class="call">أتصل بنا  24/7<span><a href="tel:123456789">@foreach($settings as $data) {{$data->phone}} @endforeach</a></span></p>
+							<p class="call">أتصل بنا  @foreach($settings as $data) {{$data->opentime}} @endforeach<span><a href="tel:123456789">@foreach($settings as $data) {{$data->phone}} @endforeach</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -60,7 +64,21 @@
 								</ul>
 							</div>
 							<!-- End Single Widget -->
-							<div class="sharethis-inline-follow-buttons"></div>
+							<div class="">
+
+<footer class="social-footer">
+  <div class="social-footer-left">
+    <a href="#"><img class="logo" src={{Helper::settings()->logo}} alt="#" style ="width:50px;"></a>
+  </div>
+  <div class="social-footer-icons">
+    <ul class="menu simple">
+      <li><a href={{Helper::settings()->facebook}}  ><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+      <li><a href={{Helper::settings()->insta}}><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+      <li><a href={{Helper::settings()->twitter}} ><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+</footer>
+                            </div>
 						</div>
 						<!-- End Single Widget -->
 					</div>

@@ -9,7 +9,7 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Shipping List</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">قائمة الشحن</h6>
       <a href="{{route('shipping.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Shipping</a>
     </div>
     <div class="card-body">
@@ -19,23 +19,23 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>العنوان</th>
+              <th>السعر</th>
+              <th>الحالة</th>
+              <th>الاجراء</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Action</th>
+                <th>S.N.</th>
+                <th>العنوان</th>
+                <th>السعر</th>
+                <th>الحالة</th>
+                <th>الاجراء</th>
               </tr>
           </tfoot>
           <tbody>
-            @foreach($shippings as $shipping)   
+            @foreach($shippings as $shipping)
                 <tr>
                     <td>{{$shipping->id}}</td>
                     <td>{{$shipping->type}}</td>
@@ -50,7 +50,7 @@
                     <td>
                         <a href="{{route('shipping.edit',$shipping->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                         <form method="POST" action="{{route('shipping.destroy',[$shipping->id])}}">
-                          @csrf 
+                          @csrf
                           @method('delete')
                               <button class="btn btn-danger btn-sm dltBtn" data-id={{$shipping->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="modal-body">
                               <form method="post" action="{{ route('banners.destroy',$user->id) }}">
-                                @csrf 
+                                @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger" style="margin:auto; text-align:center">Parmanent delete user</button>
                               </form>
@@ -75,13 +75,13 @@
                           </div>
                         </div>
                     </div> --}}
-                </tr>  
+                </tr>
             @endforeach
           </tbody>
         </table>
         <span style="float:right">{{$shippings->links()}}</span>
         @else
-          <h6 class="text-center">No shippings found!!! Please create shipping</h6>
+          <h6 class="text-center">لايوجد تسعيرة شحن!!! انشأ واحدة لطفاً</h6>
         @endif
       </div>
     </div>
@@ -115,7 +115,7 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
-      
+
       $('#banner-dataTable').DataTable( {
             "columnDefs":[
                 {
@@ -128,7 +128,7 @@
         // Sweet alert
 
         function deleteData(id){
-            
+
         }
   </script>
   <script>
@@ -144,8 +144,8 @@
               // alert(dataID);
               e.preventDefault();
               swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this data!",
+                    title: " هل تريد الحذف ؟",
+                    text: "لن تستطيع الاسترجاع في حال حذفت البيانات!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -154,7 +154,7 @@
                     if (willDelete) {
                        form.submit();
                     } else {
-                        swal("Your data is safe!");
+                        swal("البيانات في أمان !");
                     }
                 });
           })

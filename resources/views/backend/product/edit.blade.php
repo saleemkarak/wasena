@@ -3,21 +3,21 @@
 @section('main-content')
 
 <div class="card">
-    <h5 class="card-header">Edit Product</h5>
+    <h5 class="card-header">تعديل المنتج</h5>
     <div class="card-body">
       <form method="post" action="{{route('product.update',$product->id)}}">
-        @csrf 
+        @csrf
         @method('PATCH')
         <div class="form-group">
-          <label for="inputTitle" class="col-form-label">Title <span class="text-danger">*</span></label>
-          <input id="inputTitle" type="text" name="title" placeholder="Enter title"  value="{{$product->title}}" class="form-control">
+          <label for="inputTitle" class="col-form-label">أسم المنتج <span class="text-danger">*</span></label>
+          <input id="inputTitle" type="text" name="title" placeholder="ضع اسم المنتج"  value="{{$product->title}}" class="form-control">
           @error('title')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
 
         <div class="form-group">
-          <label for="summary" class="col-form-label">Summary <span class="text-danger">*</span></label>
+          <label for="summary" class="col-form-label">الخلاصة <span class="text-danger">*</span></label>
           <textarea class="form-control" id="summary" name="summary">{{$product->summary}}</textarea>
           @error('summary')
           <span class="text-danger">{{$message}}</span>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-          <label for="description" class="col-form-label">Description</label>
+          <label for="description" class="col-form-label">الوصف</label>
           <textarea class="form-control" id="description" name="description">{{$product->description}}</textarea>
           @error('description')
           <span class="text-danger">{{$message}}</span>
@@ -35,54 +35,54 @@
 
         <div class="form-group">
           <label for="is_featured">Is Featured</label><br>
-          <input type="checkbox" name='is_featured' id='is_featured' value='{{$product->is_featured}}' {{(($product->is_featured) ? 'checked' : '')}}> Yes                        
+          <input type="checkbox" name='is_featured' id='is_featured' value='{{$product->is_featured}}' {{(($product->is_featured) ? 'checked' : '')}}> Yes
         </div>
               {{-- {{$categories}} --}}
 
         <div class="form-group">
-          <label for="cat_id">Category <span class="text-danger">*</span></label>
+          <label for="cat_id">التصنيف الاساسي <span class="text-danger">*</span></label>
           <select name="cat_id" id="cat_id" class="form-control">
-              <option value="">--Select any category--</option>
+              <option value="">--اختر تصنيف--</option>
               @foreach($categories as $key=>$cat_data)
                   <option value='{{$cat_data->id}}' {{(($product->cat_id==$cat_data->id)? 'selected' : '')}}>{{$cat_data->title}}</option>
               @endforeach
           </select>
         </div>
-        @php 
+        @php
           $sub_cat_info=DB::table('categories')->select('title')->where('id',$product->child_cat_id)->get();
         // dd($sub_cat_info);
 
         @endphp
         {{-- {{$product->child_cat_id}} --}}
         <div class="form-group {{(($product->child_cat_id)? '' : 'd-none')}}" id="child_cat_div">
-          <label for="child_cat_id">Sub Category</label>
+          <label for="child_cat_id">التصنيف الثانوي</label>
           <select name="child_cat_id" id="child_cat_id" class="form-control">
-              <option value="">--Select any sub category--</option>
-              
+              <option value="">--اختر تصنيف ثانوي--</option>
+
           </select>
         </div>
 
         <div class="form-group">
-          <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
-          <input id="price" type="number" name="price" placeholder="Enter price"  value="{{$product->price}}" class="form-control">
+          <label for="price" class="col-form-label">السعر بالدينار <span class="text-danger">*</span></label>
+          <input id="price" type="number" name="price" placeholder="ضع سعر المنتج هنا"  value="{{$product->price}}" class="form-control">
           @error('price')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
 
         <div class="form-group">
-          <label for="discount" class="col-form-label">Discount(%)</label>
-          <input id="discount" type="number" name="discount" min="0" max="100" placeholder="Enter discount"  value="{{$product->discount}}" class="form-control">
+          <label for="discount" class="col-form-label">الخصم%)</label>
+          <input id="discount" type="number" name="discount" min="0" max="100" placeholder="ضع قيمة الخصم هنا"  value="{{$product->discount}}" class="form-control">
           @error('discount')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
         <div class="form-group">
-          <label for="size">Size</label>
+          <label for="size">الحجم</label>
           <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
-              <option value="">--Select any size--</option>
-              @foreach($items as $item)              
-                @php 
+              <option value="">--اختر الحجم--</option>
+              @foreach($items as $item)
+                @php
                 $data=explode(',',$item->size);
                 // dd($data);
                 @endphp
@@ -94,9 +94,9 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="brand_id">Brand</label>
+          <label for="brand_id">العلامة التجارية</label>
           <select name="brand_id" class="form-control">
-              <option value="">--Select Brand--</option>
+              <option value="">--اختر العلامة--</option>
              @foreach($brands as $brand)
               <option value="{{$brand->id}}" {{(($product->brand_id==$brand->id)? 'selected':'')}}>{{$brand->title}}</option>
              @endforeach
@@ -104,28 +104,28 @@
         </div>
 
         <div class="form-group">
-          <label for="condition">Condition</label>
+          <label for="condition">حالة المنتج</label>
           <select name="condition" class="form-control">
-              <option value="">--Select Condition--</option>
-              <option value="default" {{(($product->condition=='default')? 'selected':'')}}>Default</option>
-              <option value="new" {{(($product->condition=='new')? 'selected':'')}}>New</option>
-              <option value="hot" {{(($product->condition=='hot')? 'selected':'')}}>Hot</option>
+              <option value="">--اختر حالة المنتج--</option>
+              <option value="default" {{(($product->condition=='default')? 'selected':'')}}>عادي</option>
+              <option value="new" {{(($product->condition=='new')? 'selected':'')}}>جديد</option>
+              <option value="hot" {{(($product->condition=='hot')? 'selected':'')}}>رائج</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="stock">Quantity <span class="text-danger">*</span></label>
-          <input id="quantity" type="number" name="stock" min="0" placeholder="Enter quantity"  value="{{$product->stock}}" class="form-control">
+          <label for="stock">الكمية <span class="text-danger">*</span></label>
+          <input id="quantity" type="number" name="stock" min="0" placeholder="ضع الكمية"  value="{{$product->stock}}" class="form-control">
           @error('stock')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
         <div class="form-group">
-          <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
+          <label for="inputPhoto" class="col-form-label">الصور <span class="text-danger">*</span></label>
           <div class="input-group">
               <span class="input-group-btn">
                   <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-                  <i class="fas fa-image"></i> Choose
+                  <i class="fas fa-image"></i> اختر
                   </a>
               </span>
           <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$product->photo}}">
@@ -135,19 +135,19 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+
         <div class="form-group">
-          <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
+          <label for="status" class="col-form-label">الحالة <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
-            <option value="active" {{(($product->status=='active')? 'selected' : '')}}>Active</option>
-            <option value="inactive" {{(($product->status=='inactive')? 'selected' : '')}}>Inactive</option>
+            <option value="active" {{(($product->status=='active')? 'selected' : '')}}>فعال</option>
+            <option value="inactive" {{(($product->status=='inactive')? 'selected' : '')}}>غير فعال</option>
         </select>
           @error('status')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
         <div class="form-group mb-3">
-           <button class="btn btn-success" type="submit">Update</button>
+           <button class="btn btn-success" type="submit">تحديث</button>
         </div>
       </form>
     </div>
@@ -202,7 +202,7 @@
                         if(typeof(response)!='object'){
                             response=$.parseJSON(response);
                         }
-                        var html_option="<option value=''>--Select any one--</option>";
+                        var html_option="<option value=''>--اختر واحدة--</option>";
                         if(response.status){
                             var data=response.data;
                             if(response.data){

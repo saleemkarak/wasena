@@ -7,8 +7,17 @@ use App\Models\Order;
 use App\Models\Wishlist;
 use App\Models\Shipping;
 use App\Models\Cart;
+use App\Models\Settings;
 // use Auth;
 class Helper{
+
+    public static function settings(){
+        $settings = Settings::where(['id'=>'1'])->first();
+
+
+        return $settings;
+    }
+
     public static function messageList()
     {
         return Message::whereNull('read_at')->orderBy('created_at', 'desc')->get();

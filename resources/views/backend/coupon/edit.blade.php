@@ -10,7 +10,7 @@
         @method('PATCH')
         <div class="form-group">
           <label for="inputTitle" class="col-form-label">رقم الكوبون <span class="text-danger">*</span></label>
-          <input id="inputTitle" type="text" name="code" placeholder="Enter Coupon Code"  value="{{$coupon->code}}" class="form-control">
+          <input id="inputTitle" type="text" name="code" placeholder="كود الكوبون"  value="{{$coupon->code}}" class="form-control">
           @error('code')
           <span class="text-danger">{{$message}}</span>
           @enderror
@@ -29,7 +29,7 @@
 
           <div class="form-group">
               <label for="inputTitle" class="col-form-label">القيمة <span class="text-danger">*</span></label>
-              <input id="inputTitle" type="number" name="value" placeholder="Enter Coupon value"  value="{{$coupon->value}}" class="form-control">
+              <input id="inputTitle" type="number" name="value" placeholder="قيمة الكوبون"  value="{{$coupon->value}}" class="form-control">
               @error('value')
               <span class="text-danger">{{$message}}</span>
               @enderror
@@ -65,7 +65,7 @@
 
     $(document).ready(function() {
     $('#description').summernote({
-      placeholder: "Write short description.....",
+      placeholder: "وصف قصير.....",
         tabsize: 2,
         height: 150
     });

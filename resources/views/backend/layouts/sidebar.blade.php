@@ -41,7 +41,7 @@
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Banner Options:</h6>
+          <h6 class="collapse-header">أعدادات اللافتة:</h6>
           <a class="collapse-item" href="{{route('banner.index')}}">اللافتات</a>
           <a class="collapse-item" href="{{route('banner.create')}}">اضافة لافتة</a>
         </div>

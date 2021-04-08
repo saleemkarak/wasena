@@ -116,7 +116,7 @@ class PostCommentController extends Controller
             return redirect()->route('comment.index');
         }
         else{
-            request()->session()->flash('error','Comment not found');
+            request()->session()->flash('error','تعليق غير موجود');
             return redirect()->back();
         }
 

@@ -43,7 +43,7 @@
                     <div class="carousel-caption d-none d-md-block text-left">
                         <h1 class="wow fadeInDown">{{$banner->title}}</h1>
                         <p>{!! html_entity_decode($banner->description) !!}</p>
-                        <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">Shop Now<i class="far fa-arrow-alt-circle-right"></i></i></a>
+                        <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">تسوق الان<i class="far fa-arrow-alt-circle-right"></i></i></a>
                     </div>
                 </div>
             @endforeach
@@ -143,12 +143,12 @@
                                                 <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                 <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                                 @if($product->stock<=0)
-                                                    <span class="out-of-stock">Sale out</span>
+                                                    <span class="out-of-stock">غير متوفر</span>
                                                 @elseif($product->condition=='new')
-                                                    <span class="new">New</span
+                                                    <span class="new">جديد</span
                                                 @elseif($product->condition=='hot')
 
-                                                    <span class="hot">Hot</span>
+                                                    <span class="hot">رائج</span>
                                                 @else
                                                     <span class="price-dec">{{$product->discount}}% Off</span>
                                                 @endif
@@ -172,7 +172,7 @@
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
                                                 <span>${{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;"> دينار{{number_format($product->price,2)}}</del>
+                                                <del style="padding-left:4%;"> {{number_format($product->price,2)}} دينار</del>
                                             </div>
                                         </div>
                                     </div>
@@ -209,7 +209,7 @@
                             <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
                             <div class="content">
                                 <p>{{$data->cat_info['title']}}</p>
-                                <h3>{{$data->title}} <br>Up to<span> {{$data->discount}}%</span></h3>
+                                <h3>{{$data->title}} <br>يصل الى<span> {{$data->discount}}%</span></h3>
                                 <a href="{{route('product-detail',$data->slug)}}">تسوق الان</a>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Hot Item</h2>
+                    <h2>منتجات  رائدة حالياً</h2>
                 </div>
             </div>
         </div>
@@ -251,22 +251,22 @@
                                 </a>
                                 <div class="button-head">
                                     <div class="product-action">
-                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                        <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                        <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>تسوق سريعاً</span></a>
+                                        <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>أضف للمفضلة</span></a>
                                     </div>
                                     <div class="product-action-2">
-                                        <a href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
+                                        <a href="{{route('add-to-cart',$product->slug)}}">أضف للسلة</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
                                 <div class="product-price">
-                                    <span class="old">${{number_format($product->price,2)}}</span>
+                                    <span class="old"> دينار {{number_format($product->price,2)}}</span>
                                     @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                     @endphp
-                                    <span>${{number_format($after_discount,2)}}</span>
+                                    <span>دينار {{number_format($after_discount,2)}}</span>
                                 </div>
                             </div>
                         </div>
@@ -372,7 +372,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>From Our Blog</h2>
+                    <h2>مدونة المتجر</h2>
                 </div>
             </div>
         </div>
@@ -386,7 +386,7 @@
                             <div class="content">
                                 <p class="date">{{$post->created_at->format('d M , Y. D')}}</p>
                                 <a href="{{route('blog.detail',$post->slug)}}" class="title">{{$post->title}}</a>
-                                <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">Continue Reading</a>
+                                <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">أستمر في  مشاعدة المزيد</a>
                             </div>
                         </div>
                         <!-- End Single Blog  -->
@@ -400,48 +400,7 @@
 <!-- End Shop Blog  -->
 
 <!-- Start Shop Services Area -->
-<section class="shop-services section home">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-rocket"></i>
-                    <h4>Free shiping</h4>
-                    <p>Orders over $100</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-reload"></i>
-                    <h4>Free Return</h4>
-                    <p>Within 30 days returns</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-lock"></i>
-                    <h4>Sucure Payment</h4>
-                    <p>100% secure payment</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-tag"></i>
-                    <h4>Best Peice</h4>
-                    <p>Guaranteed price</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-        </div>
-    </div>
-</section>
+@include('frontend.layouts.serviceArea')
 <!-- End Shop Services Area -->
 
 @include('frontend.layouts.newsletter')
@@ -497,20 +456,20 @@
                                                         @endif
                                                     @endfor
                                                 </div>
-                                                <a href="#"> ({{$rate_count}} customer review)</a>
+                                                <a href="#"> ({{$rate_count}} مراجعة الزبون)</a>
                                             </div>
                                             <div class="quickview-stock">
                                                 @if($product->stock >0)
-                                                <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
+                                                <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} في المخزن</span>
                                                 @else
-                                                <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
+                                                <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} غير متوفر</span>
                                                 @endif
                                             </div>
                                         </div>
                                         @php
                                             $after_discount=($product->price-($product->price*$product->discount)/100);
                                         @endphp
-                                        <h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                        <h3><small><del class="text-muted"> دينار {{number_format($product->price,2)}}</del></small>   دينار {{number_format($after_discount,2)}}  </h3>
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($product->summary) !!}</p>
                                         </div>
@@ -562,7 +521,7 @@
                                                 <!--/ End Input Order -->
                                             </div>
                                             <div class="add-to-cart">
-                                                <button type="submit" class="btn">Add to cart</button>
+                                                <button type="submit" class="btn">اضف للسلة</button>
                                                 <a href="{{route('add-to-wishlist',$product->slug)}}" class="btn min"><i class="ti-heart"></i></a>
                                             </div>
                                         </form>

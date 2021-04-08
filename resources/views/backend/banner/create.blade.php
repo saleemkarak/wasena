@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title','E-SHOP || Banner Create')
+@section('title','{{Helper::settings()->title}} || اضف لافتة')
 
 @section('main-content')
 

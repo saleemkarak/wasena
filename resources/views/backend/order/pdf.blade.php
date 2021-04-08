@@ -87,19 +87,19 @@
        <h3>{{$order->first_name}} {{$order->last_name}}</h3>
        <div class="address">
         <p>
-          <strong>Country: </strong>
+          <strong>المحافظة: </strong>
           {{$order->country}}
         </p>
         <p>
-          <strong>Address: </strong>
+          <strong>العنوان: </strong>
           {{ $order->address1 }} OR {{ $order->address2}}
         </p>
-         <p><strong>Phone:</strong> {{ $order->phone }}</p>
-         <p><strong>Email:</strong> {{ $order->email }}</p>
+         <p><strong>رقم هاتف:</strong> {{ $order->phone }}</p>
+         <p><strong>البريد:</strong> {{ $order->email }}</p>
        </div>
     </div>
     <div class="invoice-right-top float-right" class="text-right">
-      <h3>Invoice #{{$order->order_number}}</h3>
+      <h3>رقم الفاتورة #{{$order->order_number}}</h3>
       <p>{{ $order->created_at->format('D d m Y') }}</p>
       {{-- <img class="img-responsive" src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(150)->generate(route('admin.product.order.show', $order->id )))}}"> --}}
     </div>
@@ -107,14 +107,14 @@
   </div>
   <section class="order_details pt-3">
     <div class="table-header">
-      <h5>Order Details</h5>
+      <h5>تفاصيل الطلبية</h5>
     </div>
     <table class="table table-bordered table-stripe">
       <thead>
         <tr>
-          <th scope="col" class="col-6">Product</th>
-          <th scope="col" class="col-3">Quantity</th>
-          <th scope="col" class="col-3">Total</th>
+          <th scope="col" class="col-6">اسم المنتج</th>
+          <th scope="col" class="col-3">الكمية</th>
+          <th scope="col" class="col-3">المبلغ الاجمالي</th>
         </tr>
       </thead>
       <tbody>
@@ -129,15 +129,15 @@
               @endforeach
             </span></td>
           <td>x{{$cart->quantity}}</td>
-          <td><span>${{number_format($cart->price,2)}}</span></td>
+          <td><span>{{number_format($cart->price,2)}} دينار</span></td>
         </tr>
       @endforeach
       </tbody>
       <tfoot>
         <tr>
           <th scope="col" class="empty"></th>
-          <th scope="col" class="text-right">Subtotal:</th>
-          <th scope="col"> <span>${{number_format($order->sub_total,2)}}</span></th>
+          <th scope="col" class="text-right">الحساب:</th>
+          <th scope="col"> <span>{{number_format($order->sub_total,2)}} دينار</span></th>
         </tr>
       {{-- @if(!empty($order->coupon))
         <tr>
@@ -151,15 +151,15 @@
           @php
             $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
           @endphp
-          <th scope="col" class="text-right ">Shipping:</th>
-          <th><span>${{number_format($shipping_charge[0],2)}}</span></th>
+          <th scope="col" class="text-right ">الشحن:</th>
+          <th><span>{{number_format($shipping_charge[0],2)}} دينار</span></th>
         </tr>
         <tr>
           <th scope="col" class="empty"></th>
-          <th scope="col" class="text-right">Total:</th>
+          <th scope="col" class="text-right">الاجمالي:</th>
           <th>
             <span>
-                ${{number_format($order->total_amount,2)}}
+                {{number_format($order->total_amount,2)}} دينار
             </span>
           </th>
         </tr>
@@ -167,11 +167,11 @@
     </table>
   </section>
   <div class="thanks mt-3">
-    <h4>Thank you for your business !!</h4>
+    <h4>شكرا لتعاملكم مع متجرنا !!</h4>
   </div>
   <div class="authority float-right mt-5">
     <p>-----------------------------------</p>
-    <h5>Authority Signature:</h5>
+    <h5>توقيع معتمد:</h5>
   </div>
   <div class="clearfix"></div>
 @else

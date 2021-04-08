@@ -21,6 +21,12 @@ class SettingTableSeeder extends Seeder
             'address'=>"NO. 342 - London Oxford Street, 012 United Kingdom",
             'email'=>"eshop@gmail.com",
             'phone'=>"+060 (800) 801-582",
+            'title'=>"MicroJo",
+            'facebook'=>"microjo.facebook",
+            'twitter'=>"microjo.twitter",
+            'insta'=>"insta.microjo",
+            'opentime'=>"٨ صباحاً - ٨ مساءاً"
+
         );
         DB::table('settings')->insert($data);
     }
