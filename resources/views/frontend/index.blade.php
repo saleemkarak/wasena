@@ -203,7 +203,7 @@
 <section class="midium-banner">
     <div class="container">
         <div class="row">
-            @if($featured)
+            @if( isset($featured))
                 @foreach($featured as $data)
                     <!-- Single Banner  -->
                     <div class="col-lg-6 col-md-6 col-12">
