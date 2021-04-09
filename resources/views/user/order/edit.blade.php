@@ -1,6 +1,9 @@
 @extends('user.layouts.master')
 
-@section('title','Order Detail')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || تفاصيل الطلب ' )
 
 @section('main-content')
 <div class="card">

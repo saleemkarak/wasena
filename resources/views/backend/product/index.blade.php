@@ -22,7 +22,7 @@
               <th>المنتج</th>
               <th>التصنيف</th>
               <th>رائج</th>
-              <th>الشعر</th>
+              <th>السعر</th>
               <th>الخصم</th>
               <th>الحجم</th>
               <th>الشروط</th>
@@ -39,7 +39,7 @@
                 <th>المنتج</th>
                 <th>التصنيف</th>
                 <th>رائج</th>
-                <th>الشعر</th>
+                <th>السعر</th>
                 <th>الخصم</th>
                 <th>الحجم</th>
                 <th>الشروط</th>
@@ -69,8 +69,8 @@
                       </sub>
                     </td>
                     <td>{{(($product->is_featured==1)? 'Yes': 'No')}}</td>
-                    <td>Rs. {{$product->price}} /-</td>
-                    <td>  {{$product->discount}}% OFF</td>
+                    <td> {{$product->price}} دينار</td>
+                    <td>  {{$product->discount}}% خصم</td>
                     <td>{{$product->size}}</td>
                     <td>{{$product->condition}}</td>
                     <td>@foreach($brands as $brand) {{$brand->title}} @endforeach</td>

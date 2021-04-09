@@ -24,6 +24,13 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
+        <div class="form-group">
+            <label for="meta" class="col-form-label">كلمات مفتاحية لزيادة البحث ضع فاصلة بين الكلمات <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="googlmap" required value="{{$data->meta}}">
+            @error('meta')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+          </div>
 
         <div class="form-group">
           <label for="description" class="col-form-label">الوصف العام <span class="text-danger">*</span></label>
@@ -66,6 +73,13 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
+        <div class="form-group">
+            <label for="googlmap" class="col-form-label">خريطة جوجل <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="googlmap" required value="{{$data->googlmap}}">
+            @error('googlmap')
+            <span class="text-danger">{{$message}}</span>
+            @enderror
+          </div>
 
         <div class="form-group">
           <label for="address" class="col-form-label">العنوان <span class="text-danger">*</span></label>

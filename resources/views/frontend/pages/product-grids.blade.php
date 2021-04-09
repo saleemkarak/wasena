@@ -115,7 +115,7 @@
                                                 @php
                                                     $org=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <p class="price"><del class="text-muted">${{number_format($product->price,2)}}</del>   ${{number_format($org,2)}}  </p>
+                                                <p class="price"><del class="text-muted">دينار {{number_format($product->price,2)}}</del>   دينار {{number_format($org,2)}}  </p>
 
                                             </div>
                                         </div>
@@ -205,8 +205,8 @@
                                                 @php
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <span>دينار{{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;">${{number_format($product->price,2)}}</del>
+                                                <span >دينار{{number_format($after_discount,2)}}</span>
+                                                <del style="padding-left:4%;">دينار {{number_format($product->price,2)}} </del>
                                             </div>
                                         </div>
                                     </div>

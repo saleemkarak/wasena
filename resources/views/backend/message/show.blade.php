@@ -9,7 +9,7 @@
         @else
         <img src="{{asset('backend/img/avatar.png')}}" class="rounded-circle " style="margin-left:44%;">
         @endif
-        <div class="py-4">From: <br>
+        <div class="py-4">نموذج: <br>
            الاسم :{{$message->name}}<br>
            البريد :{{$message->email}}<br>
            رقم الهاتف :{{$message->phone}}

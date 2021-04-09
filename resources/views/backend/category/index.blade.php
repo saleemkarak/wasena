@@ -10,7 +10,7 @@
      </div>
     <div class="card-header py-3" dir="rtl">
       <h6 class="m-0 font-weight-bold text-primary float-left">قائمة التصنيفات</h6>
-      <a href="{{route('category.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Category</a>
+      <a href="{{route('category.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> أضف تصنيف</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -21,7 +21,7 @@
               <th>S.N.</th>
               <th>العنوان</th>
               <th>الترميز</th>
-              <th>هل هو تصنيف اعلى</th>
+              <th>تصنيف اساسي</th>
               <th>تصنيف اعلى</th>
               <th>الصورة</th>
               <th>الحالة</th>
@@ -33,7 +33,7 @@
                 <th>S.N.</th>
                 <th>العنوان</th>
                 <th>الترميز</th>
-                <th>هل هو تصنيف اعلى</th>
+                <th>تصنيف اساسي</th>
                 <th>تصنيف اعلى</th>
                 <th>الصورة</th>
                 <th>الحالة</th>
@@ -52,7 +52,7 @@
                     <td>{{$category->id}}</td>
                     <td>{{$category->title}}</td>
                     <td>{{$category->slug}}</td>
-                    <td>{{(($category->is_parent==1)? 'Yes': 'No')}}</td>
+                    <td>{{(($category->is_parent==1)? 'نعم': 'لا')}}</td>
                     <td>
                         @foreach($parent_cats as $parent_cat)
                             {{$parent_cat->title}}

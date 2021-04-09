@@ -27,6 +27,8 @@ class CreateSettingsTable extends Migration
             $table->string('twitter');
             $table->string('insta');
             $table->string('opentime');
+            $table->text('googlmap');
+            $table->text('meta');
             $table->timestamps();
         });
     }

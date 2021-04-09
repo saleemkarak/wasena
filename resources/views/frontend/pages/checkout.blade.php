@@ -1,6 +1,9 @@
 @extends('frontend.layouts.master')
 
-@section('title','Checkout page')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || صفحة الدفع والانهاء' )
 
 @section('main-content')
 
@@ -154,9 +157,9 @@
                                                 }
                                             @endphp
                                             @if(session('coupon'))
-                                                <li class="last"  id="order_total_price">المجموع<span>دينار {{number_format($total_amount,2)}}</span></li>
+                                                <li class="last"  id="order_total_price">المجموع<span> {{number_format($total_amount,2)}} دينار</span></li>
                                             @else
-                                                <li class="last"  id="order_total_price">Total<span>دينار {{number_format($total_amount,2)}}</span></li>
+                                                <li class="last"  id="order_total_price">Total<span> {{number_format($total_amount,2)}} دينار</span></li>
                                             @endif
                                         </ul>
                                     </div>

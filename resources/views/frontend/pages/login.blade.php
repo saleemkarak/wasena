@@ -1,6 +1,9 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-Shop || Login Page')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || صفحة الدخول' )
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -52,9 +55,9 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Login</button>
+                                        <button class="btn" type="submit">دخول</button>
                                         <a href="{{route('register.form')}}" class="btn">تسجيل</a>
-                                        OR
+                                        أو
                                         <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
                                         <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
                                         <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>

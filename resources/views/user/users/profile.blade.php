@@ -11,7 +11,7 @@
         </div>
     </div>
    <div class="card-header py-3">
-     <h4 class=" font-weight-bold">Profile</h4>
+     <h4 class=" font-weight-bold">الملف الشخصي</h4>
      <ul class="breadcrumbs">
          <li><a href="{{route('admin')}}" style="color:#999">صفحتي</a></li>
          <li><a href="" class="active text-primary">الحساب</a></li>
@@ -68,17 +68,7 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
-                      <div class="form-group">
-                          <label for="role" class="col-form-label">الدور</label>
-                          <select name="role" class="form-control">
-                              <option value="">-----اختر دور المستخدم-----</option>
-                                  <option value="admin" {{(($profile->role=='admin')? 'selected' : '')}}>مسؤوول</option>
-                                  <option value="user" {{(($profile->role=='user')? 'selected' : '')}}>مستخدم</option>
-                          </select>
-                        @error('role')
-                        <span class="text-danger">{{$message}}</span>
-                        @enderror
-                        </div>
+
 
                         <button type="submit" class="btn btn-success btn-sm">تحديث</button>
                 </form>

@@ -1,6 +1,9 @@
 @extends('user.layouts.master')
 
-@section('title','Review Edit')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || تعديل المراجعة ' )
 
 @section('main-content')
 <div class="card">

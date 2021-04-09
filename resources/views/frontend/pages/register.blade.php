@@ -1,6 +1,9 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Register Page')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || صفحة التسجيل' )
 
 @section('main-content')
 	<!-- Breadcrumbs -->

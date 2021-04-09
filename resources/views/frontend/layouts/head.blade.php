@@ -1,5 +1,8 @@
 <!-- Meta Tag -->
-@yield('meta')
+<meta name="keywords" content="@yield('meta_keywords',Helper::settings()->meta .'MicroJo' )">
+<meta name="description" content="@yield('meta_description',Helper::settings()->short_des)">
+<link rel="canonical" href="{{url()->current()}}"/>
+
 <!-- Title Tag  -->
 <title>@yield('title')</title>
 <!-- Favicon -->

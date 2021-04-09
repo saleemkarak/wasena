@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div class="card">
-    <h5 class="card-header">تعديل منشور</h5>
+    <h5 class="card-header">تعديل الاعدادات</h5>
     <div class="card-body">
     <form method="post" action="{{route('settings.update')}}">
         @csrf
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-          <label for="address" class="col-form-label">Address <span class="text-danger">*</span></label>
+          <label for="address" class="col-form-label">العنوان <span class="text-danger">*</span></label>
           <input type="text" class="form-control" name="address" required value="{{$data->address}}">
           @error('address')
           <span class="text-danger">{{$message}}</span>

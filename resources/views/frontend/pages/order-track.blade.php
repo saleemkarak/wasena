@@ -1,6 +1,9 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Order Track Page')
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || تتبع الشحنة' )
 
 @section('main-content')
     <!-- Breadcrumbs -->

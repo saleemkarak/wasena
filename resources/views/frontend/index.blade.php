@@ -1,5 +1,10 @@
 @extends('frontend.layouts.master')
-@section('title','E-SHOP || HOME PAGE')
+
+@php
+    $title=Helper::settings()->title;
+@endphp
+@section('title',$title .  ' || الصفحة الرئيسية' )
+
 @section('main-content')
 <!-- Slider Area -->
 <section class="hero-slider">
@@ -209,7 +214,7 @@
                             <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
                             <div class="content">
                                 <p>{{$data->cat_info['title']}}</p>
-                                <h3>{{$data->title}} <br>يصل الى<span> {{$data->discount}}%</span></h3>
+                                <h3>{{$data->title}} <br>{{$data->discount}}% <span> خصم </span></h3>
                                 <a href="{{route('product-detail',$data->slug)}}">تسوق الان</a>
                             </div>
                         </div>
