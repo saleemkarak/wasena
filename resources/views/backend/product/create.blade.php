@@ -42,8 +42,10 @@
           <label for="cat_id">التصنيف الاساسي <span class="text-danger">*</span></label>
           <select name="cat_id" id="cat_id" class="form-control">
               <option value="">--اختر تصنيف --</option>
-              @foreach($categories as $key=>$cat_data)
-                  <option value='{{$cat_data->id}}'>{{$cat_data->title}}</option>
+              @foreach($categories as $key=>$category)
+
+                  <option value="{{$category->id}}"{{old('cat_id')==$category->id ? 'selected' : ''}}>{{$category->title}}</option>
+
               @endforeach
           </select>
         </div>
@@ -60,7 +62,7 @@
 
         <div class="form-group">
           <label for="price" class="col-form-label">السعر بالدينار <span class="text-danger">*</span></label>
-          <input id="price" type="number" name="price" placeholder="ضع السعر الاساسي"  value="{{old('price')}}" class="form-control">
+          <input id="price" type="number" name="price" placeholder="  مثال ١٠"  value="{{old('price')}}" class="form-control">
           @error('price')
           <span class="text-danger">{{$message}}</span>
           @enderror
@@ -68,7 +70,7 @@
 
         <div class="form-group">
           <label for="discount" class="col-form-label">الخصم(%)</label>
-          <input id="discount" type="number" name="discount" min="0" max="100" placeholder="Enter discount"  value="{{old('discount')}}" class="form-control">
+          <input id="discount" type="number" name="discount" min="0" max="100" placeholder="١٠٪"  value="{{old('discount')}}" class="form-control">
           @error('discount')
           <span class="text-danger">{{$message}}</span>
           @enderror
@@ -77,10 +79,12 @@
           <label for="size">الحجم</label>
           <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
               <option value="">--اختر اي حجم--</option>
-              <option value="S">Small (S)</option>
-              <option value="M">Medium (M)</option>
-              <option value="L">Large (L)</option>
-              <option value="XL">Extra Large (XL)</option>
+              <option value="S" {{old('size')=='S' ? 'selected' : ''}}>Small (S)</option>
+              <option value="M" {{old('size')=='M' ? 'selected' : ''}}>Medium (M)</option>
+              <option value="L" {{old('size')=='L' ? 'selected' : ''}}>Large (L)</option>
+              <option value="XL {{old('size')=='XL' ? 'selected' : ''}}">Extra Large (XL)</option>
+
+
           </select>
         </div>
 
@@ -91,7 +95,8 @@
           <select name="brand_id" class="form-control">
               <option value="">--اختر العلامة--</option>
              @foreach($brands as $brand)
-              <option value="{{$brand->id}}">{{$brand->title}}</option>
+             <option value="{{$brand->id}}" {{old('brand_id')==$brand->id ? 'selected' : ''}}>{{$brand->title}}</option>
+
              @endforeach
           </select>
         </div>
@@ -100,9 +105,11 @@
           <label for="condition">حالة المنتج</label>
           <select name="condition" class="form-control">
               <option value="">--اختر--</option>
-              <option value="default">عادي</option>
-              <option value="new">جديد</option>
-              <option value="hot">رائدة</option>
+              <option value="default  {{old('condition')=='default' ? 'selected' : ''}}">عادي</option>
+              <option value="new"  {{old('condition')=='new' ? 'selected' : ''}}>جديد</option>
+              <option value="hot"  {{old('condition')=='hot' ? 'selected' : ''}}>رائدة</option>
+
+
           </select>
         </div>
 
@@ -132,8 +139,10 @@
         <div class="form-group">
           <label for="status" class="col-form-label">الحالة <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
-              <option value="active">فعال</option>
-              <option value="inactive">غير فعال</option>
+              <option value="active" {{old('status')=='inactive' ? 'selected' : ''}}>فعال</option>
+              <option value="inactive" {{old('status')=='inactive' ? 'selected' : ''}}>غير فعال</option>
+
+
           </select>
           @error('status')
           <span class="text-danger">{{$message}}</span>
