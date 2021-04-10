@@ -26,14 +26,23 @@
 	@yield('main-content')
 
 	@include('frontend.layouts.footer')
+@php
+    $wt=Helper::settings()->phone;
+    $msg=Helper::settings()->title;
+@endphp
 <!-- GetButton.io widget -->
 <script type="text/javascript">
     (function () {
+
+        var whatsappNo = {!! json_encode($wt, JSON_HEX_TAG) !!};
+        var msgAdd = {!! json_encode($msg, JSON_HEX_TAG) !!};
         var options = {
-            whatsapp: "0799654739", // WhatsApp number
-            call_to_action: "بحاجة لمساعدة اثناء التسوق", // Call to action
+
+            whatsapp: whatsappNo , // WhatsApp number
+            call_to_action: msgAdd+"تواصل معنا لشراء المنتج من", // Call to action
             position: "right", // Position may be 'right' or 'left'
         };
+
         var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
         var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
         s.onload = function () { WhWidgetSendButton.init(host, proto, options); };

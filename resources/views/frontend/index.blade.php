@@ -155,7 +155,7 @@
 
                                                     <span class="hot">رائج</span>
                                                 @else
-                                                    <span class="price-dec">{{$product->discount}}% Off</span>
+                                                    <span class="price-dec">{{$product->discount}}% خصم</span>
                                                 @endif
 
 
@@ -172,11 +172,11 @@
                                         </div>
                                         <div class="product-content">
                                             <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                            <div class="product-price">
+                                            <div class="product-price"  dir="rtl">
                                                 @php
                                                     $after_discount=($product->price-($product->price*$product->discount)/100);
                                                 @endphp
-                                                <span>${{number_format($after_discount,2)}}</span>
+                                                <span> {{number_format($after_discount,2)}} دينار</span>
                                                 <del style="padding-left:4%;"> {{number_format($product->price,2)}} دينار</del>
                                             </div>
                                         </div>
@@ -206,6 +206,11 @@
             @if( isset($featured))
                 @foreach($featured as $data)
                     <!-- Single Banner  -->
+
+                      @php
+                          dd($data);
+                      @endphp
+
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="single-banner">
                             @php
@@ -219,6 +224,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- /End Single Banner  -->
                 @endforeach
             @endif
@@ -266,12 +272,12 @@
                             </div>
                             <div class="product-content">
                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                <div class="product-price">
-                                    <span class="old"> دينار {{number_format($product->price,2)}}</span>
+                                <div class="product-price"  dir="rtl">
+                                    <span class="old">  {{number_format($product->price,2)}} دينار</span>
                                     @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                     @endphp
-                                    <span>دينار {{number_format($after_discount,2)}}</span>
+                                    <span> {{number_format($after_discount,2)}} دينار</span>
                                 </div>
                             </div>
                         </div>
@@ -317,9 +323,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                    <div class="content">
+                                    <div class="content" dir="rtl">
                                         <h4 class="title"><a href="#">{{$product->title}}</a></h4>
-                                        <p class="price with-discount">دينار {{number_format($product->discount,2)}}</p>
+                                        <p class="price with-discount"> {{number_format($product->discount,2)}} دينار</p>
                                     </div>
                                 </div>
                                 </div>
