@@ -207,9 +207,7 @@
                 @foreach($featured as $data)
                     <!-- Single Banner  -->
 
-                      @php
-                          dd($data);
-                      @endphp
+                     @if ($data->cat_id !== Null)
 
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="single-banner">
@@ -224,7 +222,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endif
                     <!-- /End Single Banner  -->
                 @endforeach
             @endif

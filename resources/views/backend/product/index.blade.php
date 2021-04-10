@@ -52,12 +52,23 @@
           </tfoot>
           <tbody>
 
+
+
+
+
+
+
             @foreach($products as $product)
+            @if ($product->cat_id !== Null)
               @php
+
               $sub_cat_info=DB::table('categories')->select('title')->where('id',$product->child_cat_id)->get();
               // dd($sub_cat_info);
               $brands=DB::table('brands')->select('title')->where('id',$product->brand_id)->get();
+
               @endphp
+
+
                 <tr>
                     <td>{{$product->id}}</td>
                     <td>{{$product->title}}</td>
@@ -107,6 +118,7 @@
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$product->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
+                    @endif
                     {{-- Delete Modal --}}
                     {{-- <div class="modal fade" id="delModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="#delModal{{$user->id}}Label" aria-hidden="true">
                         <div class="modal-dialog" role="document">
